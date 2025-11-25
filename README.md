@@ -54,6 +54,15 @@ Windows support is currently in **beta**. You can build the installer from sourc
     ```
 3.  The installer (`.exe`) will be located in `src-tauri/target/release/bundle/nsis/`.
 
+### Prerequisites
+
+To build from source, you need:
+- **Node.js** (v18 or later)
+- **Rust** (install from [rustup.rs](https://rustup.rs))
+- **System dependencies:**
+  - Linux: `webkit2gtk-4.1`, `libgtk-3-dev`
+  - Windows: Visual Studio Build Tools
+
 ### Building from Source
 
 To build the application manually:
