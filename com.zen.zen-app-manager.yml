@@ -12,6 +12,12 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
+  - --socket=session-bus
+  # GTK tema ve font erişimi
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  - --talk-name=ca.desrt.dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
   # Başlangıç uygulamalarını yönetmek için gerekli izinler
   - --filesystem=xdg-config/autostart:create
   - --filesystem=xdg-data/autostart:create
@@ -33,7 +39,7 @@ modules:
       - type: git
         url: https://github.com/d0ksan8/zen-app-manager.git
         tag: main
-        commit: cbd5a681fed380f934b34e33e7725a73e4c1cf60
+        commit: 65e4c332ec0ceaf31f41e250554283ddefe1dd6c
       - generated-sources.json
       # NOT: Rust bağımlılıkları (crates) buraya eklenmeli.
       # Flathub derleme sırasında internete kapalıdır, bu yüzden
