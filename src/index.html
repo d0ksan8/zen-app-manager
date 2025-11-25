@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="titlebar.css" />
+  <link rel="stylesheet" href="help.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen App Manager</title>
+  <script type="module" src="/main.js" defer></script>
+</head>
+
+<body>
+  <div data-tauri-drag-region class="titlebar">
+    <div class="titlebar-title"><span style="color: #00D4FF;">♥</span></div>
+    <div class="titlebar-controls">
+      <div class="titlebar-button" id="titlebar-minimize">
+        <img src="https://api.iconify.design/mdi:minus.svg?color=white" alt="minimize" />
+      </div>
+      <div class="titlebar-button" id="titlebar-maximize">
+        <img src="https://api.iconify.design/mdi:window-maximize.svg?color=white" alt="maximize" />
+      </div>
+      <div class="titlebar-button" id="titlebar-close">
+        <img src="https://api.iconify.design/mdi:close.svg?color=white" alt="close" />
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <h1>Zen App Manager</h1>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button id="add-btn" class="btn">
+        <span>+</span> Add New App
+      </button>
+    </div>
+
+    <div id="app-list" class="app-list">
+      <!-- Apps will be injected here -->
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    Zen App Manager created with 💚 by doksan8
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: center; position: relative;">
+        <h2>Add Startup App</h2>
+        <button id="help-btn" class="help-btn" type="button">?</button>
+      </div>
+
+      <div id="help-content" class="help-content">
+        <h3>How to add an app?</h3>
+        <p>1. <strong>Name:</strong> Give your app a name (e.g., "Discord").</p>
+        <p>2. <strong>Command:</strong> Enter the command to run the app.</p>
+        <div class="tip-box">
+          <span>💡 Tip:</span> You can usually find the command by opening a terminal and typing the app name (e.g.,
+          <code>discord</code> or <code>spotify</code>). If it opens, that's your command!
+        </div>
+        <p>3. <strong>Description:</strong> Optional note about what this app does.</p>
+      </div>
+
+      <form id="add-form">
+        <div class="form-group">
+          <label for="app-name">Application Name</label>
+          <input type="text" id="app-name" required placeholder="e.g. Firefox" />
+        </div>
+        <div class="form-group">
+          <label for="app-command">Command</label>
+          <input type="text" id="app-command" required placeholder="e.g. firefox" />
+        </div>
+        <div class="form-group">
+          <label for="app-desc">Description</label>
+          <input type="text" id="app-desc" placeholder="Optional description" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn">Add App</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Are you sure bro?</h2>
+      </div>
+      <p style="margin-bottom: 2rem; color: rgba(255, 255, 255, 0.8);">Do you really want to remove this app from
+        startup?</p>
+      <div class="modal-actions">
+        <button id="confirm-cancel-btn" class="btn-secondary">No, wait</button>
+        <button id="confirm-yes-btn" class="btn" style="background: #ff4d4d; color: white;">Yes, delete it</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

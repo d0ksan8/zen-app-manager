@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.zen.zen-app-manager</id>
+  <name>Zen App Manager</name>
+  <summary>Manage your startup applications easily</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      Zen App Manager is a minimal and modern tool designed to help you manage your startup applications on Linux.
+      It provides a user-friendly interface to list, enable, disable, add, and remove applications that start automatically when you log in.
+    </p>
+    <ul>
+      <li>Simple and clean user interface</li>
+      <li>Toggle startup apps on/off</li>
+      <li>Add new custom startup commands</li>
+      <li>Remove unwanted startup entries</li>
+      <li>Dark mode with a modern aesthetic</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">com.zen.zen-app-manager.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <!-- Github reponuzdaki ekran görüntüsü linkini buraya koymalısınız -->
+      <image>https://raw.githubusercontent.com/installKnox/zen-app-manager/main/screenshots/main.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/installKnox/zen-app-manager</url>
+  <developer_name>doksan8</developer_name>
+  <releases>
+    <release version="0.1.0" date="2025-11-25">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

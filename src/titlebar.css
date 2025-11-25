@@ -1,0 +1,55 @@
+/* Custom Title Bar */
+.titlebar {
+    height: 32px;
+    background: #020024;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding-left: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.titlebar-title {
+    font-family: var(--title-font);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+}
+
+.titlebar-controls {
+    display: flex;
+}
+
+.titlebar-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 32px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.titlebar-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.titlebar-button#titlebar-close:hover {
+    background: #e81123;
+}
+
+.titlebar-button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Adjust Header to account for titlebar */
+header {
+    margin-top: 32px;
+}

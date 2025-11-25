@@ -1,0 +1,28 @@
+# Rust
+/target
+/debug
+**/*.rs.bk
+
+# Node/JS
+node_modules/
+dist/
+src-tauri/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Env
+.env
+.env.local
+
+# Flatpak
+.flatpak-builder/
+build-dir/
+.cargo/
+cargo/
