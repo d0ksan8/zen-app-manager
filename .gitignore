@@ -26,3 +26,6 @@ Thumbs.db
 build-dir/
 .cargo/
 cargo/
+
+# Windows
+*.exe
