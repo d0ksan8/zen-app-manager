@@ -30,8 +30,10 @@ modules:
       - install -D -m644 zen-app-manager.desktop /app/share/applications/com.zen.zen-app-manager.desktop
       - install -D -m644 com.zen.zen-app-manager.metainfo.xml /app/share/metainfo/com.zen.zen-app-manager.metainfo.xml
     sources:
-      - type: dir
-        path: .
+      - type: git
+        url: https://github.com/d0ksan8/zen-app-manager.git
+        tag: main
+        commit: cbd5a681fed380f934b34e33e7725a73e4c1cf60
       - generated-sources.json
       # NOT: Rust bağımlılıkları (crates) buraya eklenmeli.
       # Flathub derleme sırasında internete kapalıdır, bu yüzden

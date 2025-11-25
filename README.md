@@ -60,7 +60,7 @@ To build the application manually:
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/installKnox/zen-app-manager.git
+    git clone https://github.com/d0ksan8/zen-app-manager.git
     cd zen-app-manager
     ```
 

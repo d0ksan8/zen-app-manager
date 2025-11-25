@@ -22,10 +22,10 @@
   <screenshots>
     <screenshot type="default">
       <!-- Github reponuzdaki ekran görüntüsü linkini buraya koymalısınız -->
-      <image>https://raw.githubusercontent.com/installKnox/zen-app-manager/main/screenshots/main.png</image>
+      <image>https://raw.githubusercontent.com/d0ksan8/zen-app-manager/main/screenshots/main.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/installKnox/zen-app-manager</url>
+  <url type="homepage">https://github.com/d0ksan8/zen-app-manager</url>
   <developer_name>doksan8</developer_name>
   <releases>
     <release version="0.1.0" date="2025-11-25">
