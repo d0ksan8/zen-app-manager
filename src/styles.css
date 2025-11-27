@@ -207,6 +207,8 @@ input:checked+.slider:before {
 }
 
 .modal-content {
+  position: relative;
+  /* Essential for help content positioning */
   background: #0b0b2a;
   padding: 2rem;
   border-radius: 16px;
@@ -252,6 +254,8 @@ input:checked+.slider:before {
   border-color: var(--accent-color);
 }
 
+
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -270,4 +274,56 @@ input:checked+.slider:before {
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme Toggle Button */
+.btn-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  margin-right: 1rem;
+}
+
+.btn-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Amoled Mode */
+body.amoled-mode {
+  background: #000000;
+}
+
+body.amoled-mode header {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom-color: #333;
+}
+
+body.amoled-mode .app-card {
+  background: #000;
+  border-color: #333;
+}
+
+body.amoled-mode .app-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+body.amoled-mode .modal-content {
+  background: #000;
+  border-color: #333;
+}
+
+body.amoled-mode .form-group input {
+  background: #111;
+  border-color: #333;
 }

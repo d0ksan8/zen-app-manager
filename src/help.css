@@ -25,18 +25,34 @@
 
 .help-content {
     display: none;
-    background: rgba(0, 0, 0, 0.3);
+    background: #0b0b2a;
+    /* Match modal bg */
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.9rem;
     line-height: 1.5;
+
+    /* New positioning logic */
+    position: absolute;
+    right: 100%;
+    /* Push to the left of the modal */
+    top: 0;
+    width: 250px;
+    /* Fixed width for the side panel */
+    margin-right: 1rem;
+    /* Spacing between modal and help */
+    height: 100%;
+    /* Match modal height if possible, or auto */
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
-.help-content.show {
+.help-content.active {
     display: block;
-    animation: fadeIn 0.3s ease;
+    animation: slideInLeft 0.3s ease;
 }
 
 .help-content h3 {
@@ -77,4 +93,9 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+body.amoled-mode .help-content {
+    background: #000000;
+    border-color: #333;
 }

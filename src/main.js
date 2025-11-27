@@ -11,6 +11,22 @@ document.getElementById('titlebar-maximize').addEventListener('click', async () 
 });
 document.getElementById('titlebar-close').addEventListener('click', () => appWindow.close());
 
+// Theme Logic
+const themeToggleBtn = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'amoled') {
+  document.body.classList.add('amoled-mode');
+  themeToggleBtn.textContent = '☀️';
+}
+
+themeToggleBtn.onclick = () => {
+  document.body.classList.toggle('amoled-mode');
+  const isAmoled = document.body.classList.contains('amoled-mode');
+  localStorage.setItem('theme', isAmoled ? 'amoled' : 'default');
+  themeToggleBtn.textContent = isAmoled ? '☀️' : '🌙';
+};
+
 // Manual Drag Implementation for Linux/Wayland compatibility
 const titlebar = document.querySelector('.titlebar');
 
@@ -138,7 +154,7 @@ const helpBtn = document.getElementById("help-btn");
 const helpContent = document.getElementById("help-content");
 
 helpBtn.onclick = () => {
-  helpContent.classList.toggle("show");
+  helpContent.classList.toggle("active");
 };
 
 cancelBtn.onclick = () => {
