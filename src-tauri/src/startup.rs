@@ -300,23 +300,24 @@ pub fn create_app(_name: String, _command: String, _description: String) -> Resu
 }
 
 pub fn delete_app(path: PathBuf) -> Result<(), String> {
-    let path_str = path.to_string_lossy().to_string();
-    
     #[cfg(target_os = "windows")]
-    if path_str.starts_with("REGISTRY::") {
-        // Parse ID from "REGISTRY::HKCU::AppName"
-        let parts: Vec<&str> = path_str.split("::").collect();
-        if parts.len() == 3 {
-            let hive = parts[1];
-            let name = parts[2];
-            
-            let root = if hive == "HKCU" { HKEY_CURRENT_USER } else { HKEY_LOCAL_MACHINE };
-            let hk = RegKey::predef(root);
-            let (key, _) = hk.create_subkey("Software\\Microsoft\\Windows\\CurrentVersion\\Run").map_err(|e| e.to_string())?;
-            key.delete_value(name).map_err(|e| e.to_string())?;
-            return Ok(());
+    {
+        let path_str = path.to_string_lossy().to_string();
+        if path_str.starts_with("REGISTRY::") {
+            // Parse ID from "REGISTRY::HKCU::AppName"
+            let parts: Vec<&str> = path_str.split("::").collect();
+            if parts.len() == 3 {
+                let hive = parts[1];
+                let name = parts[2];
+                
+                let root = if hive == "HKCU" { HKEY_CURRENT_USER } else { HKEY_LOCAL_MACHINE };
+                let hk = RegKey::predef(root);
+                let (key, _) = hk.create_subkey("Software\\Microsoft\\Windows\\CurrentVersion\\Run").map_err(|e| e.to_string())?;
+                key.delete_value(name).map_err(|e| e.to_string())?;
+                return Ok(());
+            }
+            return Err("Invalid registry path format".to_string());
         }
-        return Err("Invalid registry path format".to_string());
     }
 
     fs::remove_file(path).map_err(|e| e.to_string())
