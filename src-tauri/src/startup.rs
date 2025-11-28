@@ -190,9 +190,15 @@ fn extract_value(content: &str, key: &str) -> Option<String> {
 
 #[cfg(target_os = "linux")]
 pub fn toggle_app(path: PathBuf, enable: bool) -> Result<(), String> {
+    // Check if it's a symlink
+    let is_symlink = fs::symlink_metadata(&path)
+        .map(|m| m.file_type().is_symlink())
+        .unwrap_or(false);
+
     let content = fs::read_to_string(&path).map_err(|e| e.to_string())?;
     let mut new_lines = Vec::new();
     let mut hidden_found = false;
+    let mut gnome_enabled_found = false;
 
     for line in content.lines() {
         if line.starts_with("Hidden=") {
@@ -200,6 +206,7 @@ pub fn toggle_app(path: PathBuf, enable: bool) -> Result<(), String> {
             hidden_found = true;
         } else if line.starts_with("X-GNOME-Autostart-enabled=") {
             new_lines.push(format!("X-GNOME-Autostart-enabled={}", enable));
+            gnome_enabled_found = true;
         } else {
             new_lines.push(line.to_string());
         }
@@ -207,6 +214,16 @@ pub fn toggle_app(path: PathBuf, enable: bool) -> Result<(), String> {
 
     if !hidden_found {
         new_lines.push(format!("Hidden={}", !enable));
+    }
+    
+    if !gnome_enabled_found {
+        new_lines.push(format!("X-GNOME-Autostart-enabled={}", enable));
+    }
+
+    // If it was a symlink, remove it first so we can write a regular file
+    // This fixes "Permission denied" when trying to write to a symlink pointing to a root-owned file
+    if is_symlink {
+        fs::remove_file(&path).map_err(|e| e.to_string())?;
     }
 
     fs::write(path, new_lines.join("\n")).map_err(|e| e.to_string())?;
