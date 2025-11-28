@@ -7,19 +7,29 @@
 node_modules/
 dist/
 src-tauri/target/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Tauri
+src-tauri/gen/
+src-tauri/target/
 
 # OS
 .DS_Store
 Thumbs.db
+.directory
 
 # Editor
 .vscode/
 .idea/
 *.swp
+*.swo
 
 # Env
 .env
 .env.local
+.env.*
 
 # Flatpak
 .flatpak-builder/
@@ -27,5 +37,11 @@ build-dir/
 .cargo/
 cargo/
 
-# Windows
+# Build Artifacts
 *.exe
+*.msi
+*.deb
+*.rpm
+*.AppImage
+*.dmg
+*.tar.gz
