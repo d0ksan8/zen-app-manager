@@ -35,7 +35,7 @@ Thumbs.db
 .flatpak-builder/
 build-dir/
 .cargo/
-cargo/
+cargo/vendor/
 
 # Build Artifacts
 *.exe
