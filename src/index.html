@@ -34,17 +34,36 @@
   </header>
 
   <main>
-    <div class="controls">
-      <button id="theme-toggle" class="btn-icon" title="Toggle Amoled Mode">
-        🌙
-      </button>
-      <button id="add-btn" class="btn">
-        <span>+</span> Add New App
-      </button>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="apps">Startup Apps</button>
+      <button class="tab-btn" data-tab="services">System Services</button>
     </div>
 
-    <div id="app-list" class="app-list">
-      <!-- Apps will be injected here -->
+    <div id="apps-view" class="view-content active">
+      <div class="controls">
+        <button id="theme-toggle" class="btn-icon" title="Toggle Amoled Mode">
+          🌙
+        </button>
+        <button id="add-btn" class="btn">
+          <span>+</span> Add New App
+        </button>
+      </div>
+
+      <div id="app-list" class="app-list">
+        <!-- Apps will be injected here -->
+      </div>
+    </div>
+
+    <div id="services-view" class="view-content" style="display: none;">
+      <div class="controls">
+        <!-- Spacer to align with apps view -->
+        <div style="flex: 1;"></div>
+      </div>
+      <p class="warning-text">⚠️ Be careful! Disabling critical services may break your system.</p>
+      <div id="service-list" class="app-list">
+        <!-- Services will be injected here -->
+        <p style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.5);">Loading services...</p>
+      </div>
     </div>
   </main>
 
