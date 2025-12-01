@@ -329,13 +329,33 @@ pub fn delete_app(path: PathBuf) -> Result<(), String> {
                 
                 let root = if hive == "HKCU" { HKEY_CURRENT_USER } else { HKEY_LOCAL_MACHINE };
                 let hk = RegKey::predef(root);
-                let (key, _) = hk.create_subkey("Software\\Microsoft\\Windows\\CurrentVersion\\Run").map_err(|e| e.to_string())?;
-                key.delete_value(name).map_err(|e| e.to_string())?;
+                
+                // Use open_subkey_with_flags instead of create_subkey for better control and intent
+                // KEY_SET_VALUE is required to delete values
+                let key = hk.open_subkey_with_flags("Software\\Microsoft\\Windows\\CurrentVersion\\Run", KEY_SET_VALUE | KEY_QUERY_VALUE)
+                    .map_err(|e| {
+                        if e.kind() == std::io::ErrorKind::PermissionDenied {
+                            return "Access Denied: Please run the app as Administrator to delete system items.".to_string();
+                        }
+                        e.to_string()
+                    })?;
+
+                key.delete_value(name).map_err(|e| {
+                    if e.kind() == std::io::ErrorKind::PermissionDenied {
+                        return "Access Denied: Please run the app as Administrator to delete system items.".to_string();
+                    }
+                    e.to_string()
+                })?;
                 return Ok(());
             }
             return Err("Invalid registry path format".to_string());
         }
     }
 
-    fs::remove_file(path).map_err(|e| e.to_string())
+    fs::remove_file(path).map_err(|e| {
+        if e.kind() == std::io::ErrorKind::PermissionDenied {
+            return "Access Denied: Please run the app as Administrator to delete this file.".to_string();
+        }
+        e.to_string()
+    })
 }
