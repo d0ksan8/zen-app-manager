@@ -267,6 +267,7 @@ async function toggleApp(path, enabled) {
     await invoke("toggle_app", { path, enable: enabled });
   } catch (error) {
     console.error("Failed to toggle app:", error);
+    alert("Failed to toggle app: " + error); // Show error to user
     loadApps(); // Revert UI on error
   }
 }
