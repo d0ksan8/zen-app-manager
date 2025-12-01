@@ -1,3 +1,4 @@
+#[cfg(target_os = "linux")]
 use std::process::Command;
 use serde::{Serialize, Deserialize};
 

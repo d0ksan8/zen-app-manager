@@ -175,6 +175,7 @@ fn get_file_size(path: &std::path::Path) -> String {
     }
 }
 
+#[allow(dead_code)]
 fn extract_value(content: &str, key: &str) -> Option<String> {
     let key_eq = format!("{}=", key);
     for line in content.lines() {
